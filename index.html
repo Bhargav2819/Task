@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js"></script>
+    <script src="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supply Token</title>
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Supply Token</h1>
+
+    <button class="btn btn-primary mb-3" onclick="connectMetamask()">Connect Wallet</button>
+
+    <div class="card mb-3">
+        <div class="card-body">
+            <p class="mb-2">Your Balance: <span id="balance"></span></p>
+            <p class="mb-2">Your Supplied Amount: <span id="suppliedAmount"></span></p>
+            <p class="mb-2">Your Rewards: <span id="rewards"></span></p>
+            <button class="btn btn-dark mb-2" onclick="claimReward()">Claim Rewards</button>
+
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="supplyAmount" class="form-label">Supply Amount:</label>
+        <div class="input-group">
+            <input type="number" id="supplyAmount" class="form-control" placeholder="Enter amount">
+            <button class="btn btn-dark" onclick="supply()">Supply</button>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="claimAmount" class="form-label">Claim Amount:</label>
+        <div class="input-group">
+            <input type="number" id="claimAmount" class="form-control" placeholder="Enter amount">
+            <button class="btn btn-dark" onclick="claimAll()">Claim</button>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
