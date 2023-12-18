@@ -3,14 +3,14 @@ pragma solidity ^0.8.15;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-contract FixedStaking is ERC20 {
+contract SupplyClaim is ERC20 {
     mapping (address => uint256) public supplied;
     mapping (address => uint256) private suppliedTime;
     mapping (address => uint256) public rewardsEarned; 
     
 
-    constructor() ERC20("Fixed Staking", "Fix"){
-        _mint(msg.sender, 1000);
+    constructor() ERC20("Code Uxi", "CUXI"){
+        _mint(msg.sender, 100000000000000000000);
     }
 
     function supply(uint256 amount) external {
@@ -23,13 +23,13 @@ contract FixedStaking is ERC20 {
 
     function claimAll(uint256 amount) external {
         require(amount > 0, "Amount is <= 0");
-        require(supplied[msg.sender] >= amount, "Amount is > stacked");
+        require(supplied[msg.sender] >= amount, "Amount is > supplied");
         supplied[msg.sender] -= amount;
         _transfer(address(this), msg.sender, amount);
     }
 
     function claimReward() public {
-        require(supplied[msg.sender] > 0, "Stacked is <= 0");
+        require(supplied[msg.sender] > 0, "Supplied is <= 0");
         uint256 secondsSupplied = block.timestamp - suppliedTime[msg.sender];
         uint256 rewards = (supplied[msg.sender] * secondsSupplied * 1) / 100;
 

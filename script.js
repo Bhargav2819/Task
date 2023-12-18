@@ -1,9 +1,8 @@
-// const provider = window.ethereum; // Get Ethereum provider
-// const web3 = new Web3(provider); // Create web3 instance
 
-// const contractAddress = "0x0701c3Be5F854d38724b0B5d5d2bC012C972faE7"; // Replace with your deployed contract address
+const provider = window.ethereum;
+const web3 = new Web3(provider); 
 
-// // Replace this with your actual ABI (Application Binary Interface)
+// const contractAddress = "0x0bbe10803e43f4f6af85fb0d6cd296b25769d242"; 
 // const contractABI = [
 // 	{
 // 		"inputs": [
@@ -30,8 +29,21 @@
 // 		"type": "function"
 // 	},
 // 	{
+// 		"inputs": [
+// 			{
+// 				"internalType": "uint256",
+// 				"name": "amount",
+// 				"type": "uint256"
+// 			}
+// 		],
+// 		"name": "claimAll",
+// 		"outputs": [],
+// 		"stateMutability": "nonpayable",
+// 		"type": "function"
+// 	},
+// 	{
 // 		"inputs": [],
-// 		"name": "claim",
+// 		"name": "claimReward",
 // 		"outputs": [],
 // 		"stateMutability": "nonpayable",
 // 		"type": "function"
@@ -160,7 +172,7 @@
 // 				"type": "uint256"
 // 			}
 // 		],
-// 		"name": "stake",
+// 		"name": "supply",
 // 		"outputs": [],
 // 		"stateMutability": "nonpayable",
 // 		"type": "function"
@@ -246,19 +258,6 @@
 // 	{
 // 		"inputs": [
 // 			{
-// 				"internalType": "uint256",
-// 				"name": "amount",
-// 				"type": "uint256"
-// 			}
-// 		],
-// 		"name": "unstake",
-// 		"outputs": [],
-// 		"stateMutability": "nonpayable",
-// 		"type": "function"
-// 	},
-// 	{
-// 		"inputs": [
-// 			{
 // 				"internalType": "address",
 // 				"name": "owner",
 // 				"type": "address"
@@ -333,7 +332,26 @@
 // 				"type": "address"
 // 			}
 // 		],
-// 		"name": "stacked",
+// 		"name": "rewardsEarned",
+// 		"outputs": [
+// 			{
+// 				"internalType": "uint256",
+// 				"name": "",
+// 				"type": "uint256"
+// 			}
+// 		],
+// 		"stateMutability": "view",
+// 		"type": "function"
+// 	},
+// 	{
+// 		"inputs": [
+// 			{
+// 				"internalType": "address",
+// 				"name": "",
+// 				"type": "address"
+// 			}
+// 		],
+// 		"name": "supplied",
 // 		"outputs": [
 // 			{
 // 				"internalType": "uint256",
@@ -372,59 +390,8 @@
 // 	}
 // ];
 
-// const contract = new web3.eth.Contract(contractABI, contractAddress); // Create contract instance
-// console.log(contract);
 
-
-// let account;
-//         const connectMetamask = async () => {
-//             if(window.ethereum !== "undefined") {
-//                 const accounts = await ethereum.request({method: "eth_requestAccounts"});
-//                 account = accounts[0];
-//             }
-//         }
-
-        
-// async function approveContract() {
-//     try {
-//         const amount = document.getElementById("approve").value;
-//         // Call the approveToken function
-//         await contract.methods.approveToken(contractAddress, amount).send({ from: account, gasLimit: 300000 });
-//         alert(`Successfully approved the contract to spend ${amount} tokens`);
-//     } catch (error) {
-//         console.error(error);
-//         alert("Approval failed");
-//     }
-// }
-
-
-// async function invest() {
-//     const amount = document.getElementById("amount").value;
-//     console.log(contract);
-//     try {
-//         await contract.methods.invest(amount).send({ from: account, gas: 50000 }); // Call invest function with gas estimation
-//         alert(`Successfully invested ${amount} tokens`);
-//     } catch (error) {
-//         console.error(error);
-//         alert("Investment failed");
-//     }
-// }
-
-// async function claim() {
-//     try {
-//         await contract.methods.claim().send({ from: account, gas: 21204 }); // Call claim function with gas estimation
-//         alert("Successfully claimed daily tokens");
-//     } catch (error) {
-//         console.error(error);
-//         alert("Claim failed");
-//     }
-// }
-
-
-const provider = window.ethereum; // Get Ethereum provider
-const web3 = new Web3(provider); // Create web3 instance
-
-const contractAddress = "0x0bbe10803e43f4f6af85fb0d6cd296b25769d242"; // Replace with your deployed contract address
+const contractAddress = "0xb1b4b1668823b9ec9dff8d7360b6b14e76f72f7a";
 const contractABI = [
 	{
 		"inputs": [
